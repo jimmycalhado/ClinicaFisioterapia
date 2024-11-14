@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Plataforma</title>
+</head>
+<body>
+    <h2>Bem-vindo, {{ username }}!</h2>
+    <h3>Seu CPF é {{ cpf }}</h3>
+    <p>Você está logado na plataforma.</p>
+    <div class="buttons">
+        <a href="{% url 'listar_agendamentos' %}" class="button">Meus Agendamentos</a>
+        <a href="{% url 'criar_agendamento' %}" class="button">Novo Agendamento</a>
+    </div>
+    <a href="/logout/">Sair</a>
+</body>
+</html>

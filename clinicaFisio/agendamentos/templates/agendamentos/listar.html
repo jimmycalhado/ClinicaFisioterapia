@@ -1,0 +1,15 @@
+
+<h2>Meus Agendamentos</h2>
+<table>
+    <tr><th>Data</th><th>Horário</th><th>Descrição</th><th>Ações</th></tr>
+    {% for agendamento in agendamentos %}
+    <tr>
+        <td>{{ agendamento.data }}</td>
+        <td>{{ agendamento.horario }}</td>
+        <td>{{ agendamento.descricao }}</td>
+        <td><a href="{% url 'cancelar_agendamento' agendamento.id %}">Cancelar</a></td>
+    </tr>
+
+</table>
+<a href="{% url 'criar_agendamento' %}">Novo Agendamento</a>
+

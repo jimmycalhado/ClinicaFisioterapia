@@ -1,0 +1,26 @@
+<html>
+<head>
+
+
+
+</head>
+<body>
+
+    <form action="{% url 'cadastro' %}" method="POST">{% csrf_token %}
+        <h1>Cadastro</h1>
+        <input type="text" placeholder="Nome" name="username">
+        <br>
+        <input type="text" placeholder="000.000.000-00" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" maxlength="14"  inputmode="numeric">
+        <br>
+        <input type="tel" name="telefone" placeholder="(XX) 9XXXX-XXXX" pattern="\(\d{2}\) \d{5}-\d{4}" maxlength="15" inputmode="tel">
+        <br>
+        <input type="email" placeholder="Email" name="email">
+        <br>
+        <input type="password" placeholder="Senha" name="senha">
+        <br>
+        <input type="submit" value="Cadastrar">
+        <br>
+    </form>
+
+</body>
+</html>
