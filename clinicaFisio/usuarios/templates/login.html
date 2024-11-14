@@ -16,7 +16,7 @@
         <h1>Login</h1>
         <label for="cpf">CPF:</label>
         <br>
-        <input type="text" placeholder="000.000.000-00" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" maxlength="14"  inputmode="numeric" required>
+        <input type="text" placeholder="000.000.000-00" name="cpf" id="CPF" maxlength="14"  inputmode="numeric" required>
         <br>
         <label for="senha">Senha:</label>
         <br>
@@ -31,4 +31,6 @@
     </div>
 
 </body>
+
+<script src="{% static 'js/index.js' %}"></script>
 </html>
