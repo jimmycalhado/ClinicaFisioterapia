@@ -4,7 +4,6 @@
 
 - [Pré-requisitos](#pré-requisitos)
 - [Instalação](#instalação)
-- [Configuração](#configuração)
 - [Execução](#execução)
 - [Considerações Importantes](#considerações-importantes)
 
@@ -35,11 +34,6 @@ Ou
 3. **Ativar Máquina Virtual**:
 ```bash
   source .venv/Scripts/activate
-```
-
-4. **Instalar requirements.txt**
-```bash
-  pip install -r requirements.txt
 ```
 
 4. **Ir para o diretório do projeto Django**
