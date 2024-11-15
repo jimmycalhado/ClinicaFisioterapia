@@ -67,4 +67,3 @@ Ou
 
 - Substituições Necessárias: Certifique-se de substituir os tokens e IDs no arquivo .env para garantir o funcionamento correto do bot.
 
-.
