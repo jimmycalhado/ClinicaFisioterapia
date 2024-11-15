@@ -9,7 +9,7 @@
         <td>{{ agendamento.descricao }}</td>
         <td><a href="{% url 'cancelar_agendamento' agendamento.id %}">Cancelar</a></td>
     </tr>
-
+    {% endfor %}
 </table>
 <a href="{% url 'criar_agendamento' %}">Novo Agendamento</a>
 
