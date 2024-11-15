@@ -60,7 +60,7 @@ Ou
   python manage.py migrate
 ```
 
-- Rode o projeto uusando:
+- Rode o projeto usando:
 
 ```bash
   python manage.py runserver
