@@ -37,11 +37,6 @@ Ou
   source .venv/Scripts/activate
 ```
 
-4. **Instalar requirements.txt**
-```bash
-  pip install -r requirements.txt
-```
-
 4. **Ir para o diretório do projeto Django**
 ```bash
   cd clinicaFisio
