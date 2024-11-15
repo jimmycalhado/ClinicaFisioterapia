@@ -1,6 +1,4 @@
-# Minecraft Server Status Bot
-
-Este bot atualiza automaticamente uma mensagem com o status do servidor de Minecraft em tempo real. Siga os passos abaixo para configurar e iniciar o bot.
+# Clínica Fisioterapia
 
 ## Índice
 
