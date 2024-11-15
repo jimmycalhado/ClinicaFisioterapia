@@ -4,7 +4,6 @@
 
 - [Pré-requisitos](#pré-requisitos)
 - [Instalação](#instalação)
-- [Configuração](#configuração)
 - [Execução](#execução)
 - [Considerações Importantes](#considerações-importantes)
 
