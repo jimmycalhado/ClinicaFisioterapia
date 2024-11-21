@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Fisioterapeuta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <h1>Cadastro de Fisioterapeuta</h1>
+    <form action="{% url 'cadastro_fisioterapeuta' %}" method="POST">{% csrf_token %}
+        <input type="text" name="username" placeholder="Nome de usuário" required>
+        <br>
+        <input type="text" name="cpf"  id="CPF" placeholder="CPF" required>
+        <br>
+        <input type="text" name="telefone"  id="telefone" placeholder="Telefone" required>
+        <br>
+        <input type="email" name="email" placeholder="Email" required>
+        <br>
+        <input type="password" name="senha" placeholder="Senha" required>
+        <br>
+        <button type="submit">Cadastrar</button>
+    </form>
+</body>
+<script src="{% static 'js/index.js' %}"></script>
+</html>

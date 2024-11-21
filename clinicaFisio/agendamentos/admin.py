@@ -3,6 +3,6 @@ from .models import Agendamento
 
 @admin.register(Agendamento)
 class AgendamentoAdmin(admin.ModelAdmin):
-    list_display = ['paciente', 'data', 'horario', 'descricao']
+    list_display = ('paciente', 'fisioterapeuta', 'data', 'hora') 
     list_filter = ['data']
-    search_fields = ['paciente__username', 'descricao']
+    search_fields = ['paciente__username']

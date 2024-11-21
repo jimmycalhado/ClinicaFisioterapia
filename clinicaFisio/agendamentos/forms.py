@@ -4,8 +4,8 @@ from .models import Agendamento
 class AgendamentoForm(forms.ModelForm):
     class Meta:
         model = Agendamento
-        fields = ['data', 'horario', 'descricao']
+        fields = ['data', 'hora']
         widgets = {
             'data': forms.DateInput(attrs={'type': 'date'}),
-            'horario': forms.TimeInput(attrs={'type': 'time'}),
+            'hora': forms.TimeInput(attrs={'type': 'time'}),
         }

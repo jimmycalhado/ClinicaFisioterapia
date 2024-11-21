@@ -3,10 +3,11 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate as auth_login
 from django.contrib.auth import login as login_django, logout
+from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 
-def cadastro(request):
+def cadastro_paciente(request):
     if request.method == "GET":
         return render(request, 'cadastro.html')
     else:
@@ -23,9 +24,31 @@ def cadastro(request):
             return HttpResponse('Email já cadastrado')
         
         user = User.objects.create_user(username=username, email=email, password=senha)
-        UserProfile.objects.create(user=user, cpf=cpf, telefone=telefone)
+        UserProfile.objects.create(user=user, cpf=cpf, telefone=telefone, tipo='paciente')
         
         return HttpResponse('Usuário cadastrado com sucesso!')
+
+@user_passes_test(lambda u: u.is_superuser) 
+def cadastro_fisioterapeuta(request):
+    if request.method == "GET":
+        return render(request, 'cadastro_fisioterapeuta.html')
+    else:
+        username = request.POST.get('username')
+        cpf = request.POST.get('cpf')
+        telefone = request.POST.get('telefone')
+        email = request.POST.get('email')
+        senha = request.POST.get('senha')
+        
+        if UserProfile.objects.filter(cpf=cpf).exists():
+            return HttpResponse('CPF já cadastrado')
+
+        if User.objects.filter(email=email).exists():
+            return HttpResponse('Email já cadastrado')
+        
+        user = User.objects.create_user(username=username, email=email, password=senha)
+        UserProfile.objects.create(user=user, cpf=cpf, telefone=telefone, tipo='fisioterapeuta')
+        
+        return HttpResponse('Fisioterapeuta cadastrado com sucesso!')
 
 def authenticate_with_cpf(cpf, password):
     try:
@@ -63,3 +86,4 @@ def plataforma(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
