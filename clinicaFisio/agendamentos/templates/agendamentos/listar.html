@@ -11,10 +11,15 @@
     <tr>
         <td>{{ agendamento.data }}</td>
         <td>{{ agendamento.hora }}</td>
-        <td>{{ agendamento.fisioterapeuta.user.username }}</td>
+        <td>{{ agendamento.fisioterapeuta.user.username|default:"Não especificado" }}</td>
+
         <td>
             <a href="{% url 'cancelar_agendamento' agendamento.id %}">Cancelar</a>
         </td>
+        {% empty %}
+    </tr>
+    <tr>
+        <td colspan="4">Nenhum agendamento encontrado.</td>
     </tr>
     {% endfor %}
 </table>

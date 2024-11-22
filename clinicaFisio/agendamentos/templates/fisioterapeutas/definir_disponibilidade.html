@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Definir Disponibilidade</title>
+</head>
+<body>
+    <h1>Definir Disponibilidade</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="dias">Dias da Semana:</label>
+        <br>
+        <div>
+            <label><input type="checkbox" name="dias" value="segunda"> Segunda-feira</label>
+            <label><input type="checkbox" name="dias" value="terca"> Terça-feira</label>
+            <label><input type="checkbox" name="dias" value="quarta"> Quarta-feira</label>
+            <label><input type="checkbox" name="dias" value="quinta"> Quinta-feira</label>
+            <label><input type="checkbox" name="dias" value="sexta"> Sexta-feira</label>
+            <label><input type="checkbox" name="dias" value="sabado"> Sábado</label>
+            <label><input type="checkbox" name="dias" value="domingo"> Domingo</label>
+        </div>
+        <br>
+        <label for="hora_inicio">Hora Início:</label>
+        <input type="time" id="hora_inicio" name="hora_inicio" required>
+        <br>
+        <label for="hora_fim">Hora Fim:</label>
+        <input type="time" id="hora_fim" name="hora_fim" required>
+        <br>
+        <button type="submit">Salvar Disponibilidade</button>
+    </form>
+</body>
+</html>

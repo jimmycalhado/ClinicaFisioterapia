@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Consultas</title>
+
+</head>
+<body>
+    <h1>Consultas Agendadas</h1>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Paciente</th>
+        </tr>
+        {% for consulta in consultas %}
+        <tr>
+            <td>{{ consulta.data }}</td>
+            <td>{{ consulta.hora }}</td>
+            <td>{{ consulta.paciente.user.username }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">Nenhuma consulta agendada.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

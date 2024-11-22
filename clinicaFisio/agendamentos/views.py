@@ -42,7 +42,7 @@ def criar_agendamento(request):
             data=data,
             hora=hora
         )
-        return redirect('listar_agendamentos')
+        return redirect('listar_agendamento')
 
     fisioterapeutas = UserProfile.objects.filter(tipo='Fisioterapeuta')
     return render(request, 'agendamentos/criar.html', {'fisioterapeutas': fisioterapeutas})
@@ -65,9 +65,9 @@ def definir_disponibilidade(request):
         for dia in dias:
             Disponibilidade.objects.create(
                 fisioterapeuta=fisioterapeuta,
-                dia_da_semana=dia,
-                hora_inicio=hora_inicio,
-                hora_fim=hora_fim
+                dia_semana=dia,  # Corrigido para 'dia_semana'
+                horario_inicio=hora_inicio,  # Certifique-se de usar o nome correto
+                horario_fim=hora_fim  # Certifique-se de usar o nome correto
             )
         return redirect('ver_consultas')
 

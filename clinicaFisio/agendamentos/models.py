@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from usuarios.models import UserProfile
+from django.db.models import UniqueConstraint
 
 
 class Disponibilidade(models.Model):
@@ -8,7 +9,7 @@ class Disponibilidade(models.Model):
         UserProfile,
         on_delete=models.CASCADE,
         limit_choices_to={'tipo': 'Fisioterapeuta'}
-    )
+ )
     dia_semana = models.CharField(max_length=20, choices=[
         ('segunda', 'Segunda-feira'),
         ('terca', 'Terça-feira'),
@@ -24,8 +25,6 @@ class Disponibilidade(models.Model):
     def __str__(self):
         return f"{self.fisioterapeuta.user.username} - {self.dia_semana} ({self.horario_inicio} às {self.horario_fim})"
 
-
-from django.db.models import UniqueConstraint
 
 class Agendamento(models.Model):
     paciente = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='agendamentos')
