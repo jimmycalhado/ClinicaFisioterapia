@@ -5,8 +5,7 @@
     <title>Plataforma</title>
 </head>
 <body>
-    <h2>Bem-vindo, {{ username }}!</h2>
-    <h3>Seu CPF é {{ cpf }}</h3>
+    <h2>Bem-vindo, {{ user.first_name }} {{ user.last_name }}!</h2>
     <p>Você está logado na plataforma.</p>
     <div class="buttons">
         <a href="{% url 'listar_agendamentos' %}" class="button">Meus Agendamentos</a>

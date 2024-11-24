@@ -1,0 +1,26 @@
+{% load static tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Cadastro ou Login{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% tailwind_css %}
+</head>
+<body class="bg-gray-50">
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+            <img class="mx-auto h-14 w-auto" src="https://blog.unama.br/wp-content/uploads/2023/07/unama_logo.png" alt="Logo">
+            <h2 class="mt-10 text-center text-3xl font-bold tracking-tight text-gray-900">{% block header %}Cadastro ou Login{% endblock %}</h2>
+        </div>
+
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

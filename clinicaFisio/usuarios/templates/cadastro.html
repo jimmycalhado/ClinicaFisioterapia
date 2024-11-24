@@ -1,74 +1,104 @@
-{% load static tailwind_tags %}
-<!DOCTYPE html>
-<html lang="pt">
-<head>
+{% extends 'base_auth.html' %}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="">
-    <script src="https://cdn.tailwindcss.com"></script>
-    {% tailwind_css %}
-</head>
-<body>
-    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img class="mx-auto h-14 w-auto" src="https://blog.unama.br/wp-content/uploads/2023/07/unama_logo.png" alt="Your Company">
-          <h2 class="mt-10 text-center text-3xl/9 font-bold tracking-tight text-gray-900">Cadastro</h2>
+{% block title %}Cadastro{% endblock %}
+
+{% block header %}
+Cadastro
+{% endblock %}
+
+{% block content %}
+
+<form class="space-y-6" method="POST">
+  {% csrf_token %}
+
+  <div class="mt-2">
+    <label for="{{ form.first_name.id_for_label }}" class="block text-sm/6 font-bold text-gray-900">Nome:</label>
+    {{ form.first_name }}
+    {% if form.first_name.errors %}
+      <div class="text-red-600 text-sm mt-2">
+        {{ form.first_name.errors|join:", " }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="mt-2">
+    <label for="{{ form.last_name.id_for_label }}" class="block text-sm/6 font-bold text-gray-900">Sobrenome:</label>
+    {{ form.last_name }}
+    {% if form.last_name.errors %}
+      <div class="text-red-600 text-sm mt-2">
+        {{ form.last_name.errors|join:", " }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="mt-2">
+    <label for="{{ form.username.id_for_label }}" class="block text-sm/6 font-bold text-gray-900">Usuário:</label>
+    {{ form.username }}
+    {% if form.username.errors %}
+      <div class="text-red-600 text-sm mt-2">
+        {{ form.username.errors|join:", " }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="mt-2">
+    <label for="{{ form.cpf.id_for_label }}" class="block text-sm/6 font-bold text-gray-900">CPF:</label>
+    {{ form.cpf }}
+    {% if form.cpf.errors %}
+      <div class="text-red-600 text-sm mt-2">
+        {{ form.cpf.errors|join:", " }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="mt-2">
+    <label for="{{ form.telefone.id_for_label }}" class="block text-sm/6 font-bold text-gray-900">Telefone:</label>
+    {{ form.telefone }}
+    {% if form.telefone.errors %}
+      <div class="text-red-600 text-sm mt-2">
+        {{ form.telefone.errors|join:", " }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="mt-2">
+    <label for="{{ form.email.id_for_label }}" class="block text-sm/6 font-bold text-gray-900">Email:</label>
+    {{ form.email }}
+    {% if form.email.errors %}
+      <div class="text-red-600 text-sm mt-2">
+        {{ form.email.errors|join:", " }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="mt-2">
+      <label for="id_password1" class="block text-sm/6 font-bold text-gray-900">Senha:</label>
+      {{ form.password1 }}
+      {% if form.password1.errors %}
+        <div class="text-red-600 text-sm mt-2">
+          {{ form.password1.errors|join:", " }}
         </div>
-      
-        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form class="space-y-3" action="{% url 'cadastro_paciente' %}" method="POST">{% csrf_token %}
-            <div>
-              <label for="nome" class="block text-sm/6 font-bold text-gray-900">Nome:</label>
-              <div class="mt-2">
-                <input type="text" placeholder="Nome" name="username" id="nome" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:pl-2 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6">
-              </div>
-            </div>
-      
-            <div>
-              <label for="cpf" class="block text-sm/6 font-bold text-gray-900">CPF:</label>
-              <div class="mt-2">
-                <input type="text" placeholder="000.000.000-00" name="cpf" id="CPF" maxlength="14" inputmode="numeric" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:pl-2 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6">
-              </div>
-            </div>
-      
-            <div>
-              <label for="telefone" class="block text-sm/6 font-bold text-gray-900">Telefone:</label>
-              <div class="mt-2">
-                <input type="tel" placeholder="(XX) 9XXXX-XXXX" name="telefone" id="telefone" maxlength="15" inputmode="tel" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:pl-2 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6">
-              </div>
-            </div>
-      
-            <div>
-              <label for="email" class="block text-sm/6 font-bold text-gray-900">Email:</label>
-              <div class="mt-2">
-                <input type="email" placeholder="Email" name="email" id="email"  autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:pl-2 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6">
-              </div>
-            </div>
-      
-            <div>
-              <div class="flex items-center justify-between">
-                <label for="password" class="block text-sm/6 font-bold text-gray-900">Senha:</label>
-                <div class="text-sm">
-                </div>
-              </div>
-              <div class="mt-2">
-                <input type="password" placeholder="Senha" name="senha" id="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:pl-2 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6">
-              </div>
-            </div>
-      
-            <div>
-              <br>
-              <button type="submit" value "cadastrar" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Cadastrar</button>
-            </div>
-          </form>
-          <p class="mt-10 text-center text-sm/6 text-gray-500">
-            Já possui uma conta?
-            <a href="{% url 'login' %}" class="font-bold text-blue-600 hover:text-blue-500 underline"> Faça login</a>
-          </p>
+      {% endif %}
+  </div>
+
+  <div class="mt-2">
+      <label for="id_password2" class="block text-sm/6 font-bold text-gray-900">Confirme a Senha:</label>
+      {{ form.password2 }}
+      {% if form.password2.errors %}
+        <div class="text-red-600 text-sm mt-2">
+          {{ form.password2.errors }}
         </div>
-    </div>
-</body>
-<script src="{% static 'js/index.js' %}"></script>
-</html>
+      {% endif %}
+  </div>
+
+  <div>
+    <button type="submit" value="Cadastrar" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Cadastrar</button>
+  </div>
+</form>
+
+<p class="mt-10 text-center text-sm/6 text-gray-500">
+  Já possui uma conta?
+  <a href="{% url 'login' %}" class="font-bold text-blue-600 hover:text-blue-500 underline">Faça login</a>
+</p>
+
+{% endblock %}
