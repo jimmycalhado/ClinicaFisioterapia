@@ -37,9 +37,7 @@ INSTALLED_APPS = [
 
 TAILWIND_APP_NAME = 'theme'
 
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
+INTERNAL_IPS = ["*"]
 
 NPM_BIN_PATH= "C:/Program Files/nodejs/npm.cmd"
 
@@ -135,6 +133,6 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/plataforma/'
-LOGOUT_REDIRECT_URL = '/login/'
+LOGIN_URL = 'login'  # Ou o nome da URL de login que você usa
+LOGIN_REDIRECT_URL = 'plataforma'
+LOGOUT_REDIRECT_URL = 'login'
