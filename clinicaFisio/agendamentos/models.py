@@ -1,14 +1,33 @@
 from django.db import models
-from django.contrib.auth.models import User
-from usuarios.models import UserProfile
+from usuarios.models import User
 from django.db.models import UniqueConstraint
 
 
+class Fisioterapist(models.Model):
+   id = models.AutoField(primary_key=True)
+   user = models.OneToOneField(User, on_delete=models.PROTECT)
+   email = models.EmailField(unique=True)
+   phone_number = models.CharField(max_length=15, null=True, blank=True)
+
+
+class Agendamento(models.Model):
+    paciente = models.ForeignKey(User, on_delete=models.CASCADE, related_name='agendamentos')
+    fisioterapeuta = models.ForeignKey(User, on_delete=models.CASCADE, related_name='consultas', null=True, blank=True)
+    data = models.DateField()
+    hora = models.TimeField()
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['fisioterapeuta', 'data', 'hora'], name='unique_fisioterapeuta_horario')
+        ]
+
+    def __str__(self):
+        return f"Agendamento de {self.paciente} com {self.fisioterapeuta} em {self.data} às {self.hora}"
+
 class Disponibilidade(models.Model):
     fisioterapeuta = models.ForeignKey(
-        UserProfile,
+        Fisioterapist,
         on_delete=models.CASCADE,
-        limit_choices_to={'tipo': 'Fisioterapeuta'}
  )
     dia_semana = models.CharField(max_length=20, choices=[
         ('segunda', 'Segunda-feira'),
@@ -24,19 +43,4 @@ class Disponibilidade(models.Model):
 
     def __str__(self):
         return f"{self.fisioterapeuta.user.username} - {self.dia_semana} ({self.horario_inicio} às {self.horario_fim})"
-
-
-class Agendamento(models.Model):
-    paciente = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='agendamentos')
-    fisioterapeuta = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='consultas', null=True, blank=True)
-    data = models.DateField()
-    hora = models.TimeField()
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['fisioterapeuta', 'data', 'hora'], name='unique_fisioterapeuta_horario')
-        ]
-
-    def __str__(self):
-        return f"Agendamento de {self.paciente} com {self.fisioterapeuta} em {self.data} às {self.hora}"
 

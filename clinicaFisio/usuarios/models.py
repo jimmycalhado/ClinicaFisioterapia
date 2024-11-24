@@ -1,15 +1,17 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser, Group, Permission
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    cpf = models.CharField(max_length=14, unique=True)
+class User(AbstractUser):
     telefone = models.CharField(max_length=15)
-    tipo = models.CharField(
-        max_length=20,
-        choices=[('paciente', 'Paciente'), ('fisioterapeuta', 'Fisioterapeuta')],
-        default='paciente',  
-    )
+    cpf = models.CharField(max_length=14)
 
-    def __str__(self):
-        return self.user.username
+    groups = models.ManyToManyField(
+        Group,
+        related_name="custom_user_groups",  # Nome único para evitar conflitos
+        blank=True
+    )
+    user_permissions = models.ManyToManyField(
+        Permission,
+        related_name="custom_user_permissions",  # Nome único para evitar conflitos
+        blank=True
+    )
