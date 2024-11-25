@@ -9,10 +9,13 @@ class Fisioterapist(models.Model):
    email = models.EmailField(unique=True)
    phone_number = models.CharField(max_length=15, null=True, blank=True)
 
+   def __str__(self):
+        return f"{self.user.first_name} {self.user.last_name}"
+
 
 class Agendamento(models.Model):
     paciente = models.ForeignKey(User, on_delete=models.CASCADE, related_name='agendamentos')
-    fisioterapeuta = models.ForeignKey(User, on_delete=models.CASCADE, related_name='consultas', null=True, blank=True)
+    fisioterapeuta = models.ForeignKey(Fisioterapist, on_delete=models.CASCADE, related_name='consultas', null=True, blank=True)
     data = models.DateField()
     hora = models.TimeField()
 
@@ -22,7 +25,7 @@ class Agendamento(models.Model):
         ]
 
     def __str__(self):
-        return f"Agendamento de {self.paciente} com {self.fisioterapeuta} em {self.data} às {self.hora}"
+        return f"Agendamento de {self.paciente} com {self.fisioterapeuta.user.first_name} {self.fisioterapeuta.user.last_name} em {self.data} às {self.hora}"
 
 class Disponibilidade(models.Model):
     fisioterapeuta = models.ForeignKey(
