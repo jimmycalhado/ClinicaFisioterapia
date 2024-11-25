@@ -1,27 +1,103 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Fisioterapeuta</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <h1>Cadastro de Fisioterapeuta</h1>
-    <form action="{% url 'cadastro_fisioterapeuta' %}" method="POST">{% csrf_token %}
-        <input type="text" name="username" placeholder="Nome de usuário" required>
-        <br>
-        <input type="text" name="cpf" id="CPF" maxlength="14" placeholder="CPF" required>
-        <br>
-        <input type="text" name="telefone"  id="telefone" placeholder="Telefone" required>
-        <br>
-        <input type="email" name="email" placeholder="Email" required>
-        <br>
-        <input type="password" name="senha" placeholder="Senha" required>
-        <br>
-        <button type="submit">Cadastrar</button>
-    </form>
-</body>
-<script src="{% static 'js/index.js' %}"></script>
-</html>
+{% extends 'base_auth.html' %}
+
+{% block title %}Cadastro Fisioterapeuta{% endblock %}
+
+{% block header %}
+Cadastro Fisioterapia
+{% endblock %}
+
+{% block content %}
+
+<form class="space-y-6" method="POST">
+  {% csrf_token %}
+
+  <div class="mt-2">
+    <label for="{{ form.first_name.id_for_label }}" class="block text-sm/6 font-bold text-gray-900">Nome:</label>
+    {{ form.first_name }}
+    {% if form.first_name.errors %}
+      <div class="text-red-600 text-sm mt-2">
+        {{ form.first_name.errors|join:", " }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="mt-2">
+    <label for="{{ form.last_name.id_for_label }}" class="block text-sm/6 font-bold text-gray-900">Sobrenome:</label>
+    {{ form.last_name }}
+    {% if form.last_name.errors %}
+      <div class="text-red-600 text-sm mt-2">
+        {{ form.last_name.errors|join:", " }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="mt-2">
+    <label for="{{ form.username.id_for_label }}" class="block text-sm/6 font-bold text-gray-900">Usuário:</label>
+    {{ form.username }}
+    {% if form.username.errors %}
+      <div class="text-red-600 text-sm mt-2">
+        {{ form.username.errors|join:", " }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="mt-2">
+    <label for="{{ form.cpf.id_for_label }}" class="block text-sm/6 font-bold text-gray-900">CPF:</label>
+    {{ form.cpf }}
+    {% if form.cpf.errors %}
+      <div class="text-red-600 text-sm mt-2">
+        {{ form.cpf.errors|join:", " }}
+      </div>
+    {% endif %}
+  </div>
+  <div class="mt-2">
+    <label for="{{ form.telefone.id_for_label }}" class="block text-sm/6 font-bold text-gray-900">Telefone:</label>
+    {{ form.telefone }}
+    {% if form.telefone.errors %}
+      <div class="text-red-600 text-sm mt-2">
+        {{ form.telefone.errors|join:", " }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="mt-2">
+    <label for="{{ form.email.id_for_label }}" class="block text-sm/6 font-bold text-gray-900">Email:</label>
+    {{ form.email }}
+    {% if form.email.errors %}
+      <div class="text-red-600 text-sm mt-2">
+        {{ form.email.errors|join:", " }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="mt-2">
+      <label for="id_password1" class="block text-sm/6 font-bold text-gray-900">Senha:</label>
+      {{ form.password1 }}
+      {% if form.password1.errors %}
+        <div class="text-red-600 text-sm mt-2">
+          {{ form.password1.errors|join:", " }}
+        </div>
+      {% endif %}
+  </div>
+
+  <div class="mt-2">
+      <label for="id_password2" class="block text-sm/6 font-bold text-gray-900">Confirme a Senha:</label>
+      {{ form.password2 }}
+      {% if form.password2.errors %}
+        <div class="text-red-600 text-sm mt-2">
+          {{ form.password2.errors }}
+        </div>
+      {% endif %}
+  </div>
+
+  <div>
+    <button type="submit" value="Cadastrar" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Cadastrar</button>
+  </div>
+</form>
+
+<p class="mt-10 text-center text-sm/6 text-gray-500">
+  Já possui uma conta?
+  <a href="{% url 'login' %}" class="font-bold text-blue-600 hover:text-blue-500 underline">Faça login</a>
+</p>
+
+{% endblock %}

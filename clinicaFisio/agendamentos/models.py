@@ -1,18 +1,18 @@
 from django.db import models
-from usuarios.models import User
+from usuarios.models import User, Fisioterapeuta
 from django.db.models import UniqueConstraint
 
 
-class Fisioterapist(models.Model):
-   id = models.AutoField(primary_key=True)
-   user = models.OneToOneField(User, on_delete=models.PROTECT)
-   email = models.EmailField(unique=True)
-   phone_number = models.CharField(max_length=15, null=True, blank=True)
+#class Fisioterapist(models.Model):
+   #id = models.AutoField(primary_key=True)
+   #user = models.OneToOneField(User, on_delete=models.PROTECT)
+   #email = models.EmailField(unique=True)
+   #telefone= models.CharField(max_length=15, null=True, blank=True)
 
 
 class Agendamento(models.Model):
     paciente = models.ForeignKey(User, on_delete=models.CASCADE, related_name='agendamentos')
-    fisioterapeuta = models.ForeignKey(User, on_delete=models.CASCADE, related_name='consultas', null=True, blank=True)
+    fisioterapeuta = models.ForeignKey(Fisioterapeuta, on_delete=models.CASCADE, related_name='consultas', null=True, blank=True)
     data = models.DateField()
     hora = models.TimeField()
 
@@ -26,7 +26,7 @@ class Agendamento(models.Model):
 
 class Disponibilidade(models.Model):
     fisioterapeuta = models.ForeignKey(
-        Fisioterapist,
+        Fisioterapeuta,
         on_delete=models.CASCADE,
  )
     dia_semana = models.CharField(max_length=20, choices=[
