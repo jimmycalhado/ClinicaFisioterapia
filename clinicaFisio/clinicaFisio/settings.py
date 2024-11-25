@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-7ux5u!(jy=a7phti53llo4vql9e8047typ(rv#qn)j88$q&8y^
 DEBUG = True
 SITE_ID = 1
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'usuarios',
     'agendamentos',
-    
     'tailwind',
     'theme',
     'django_browser_reload',
@@ -138,3 +137,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/plataforma/'
 LOGOUT_REDIRECT_URL = '/login/'
+
+AUTH_USER_MODEL = 'usuarios.User'

@@ -1,15 +1,25 @@
 
-<h2>Meus Agendamentos</h2>
+<h1>Meus Agendamentos</h1>
 <table>
-    <tr><th>Data</th><th>Horário</th><th>Descrição</th><th>Ações</th></tr>
+    <tr>
+        <th>Data</th>
+        <th>Hora</th>
+        <th>Fisioterapeuta</th>
+        <th>Ações</th>
+    </tr>
     {% for agendamento in agendamentos %}
     <tr>
         <td>{{ agendamento.data }}</td>
-        <td>{{ agendamento.horario }}</td>
-        <td>{{ agendamento.descricao }}</td>
-        <td><a href="{% url 'cancelar_agendamento' agendamento.id %}">Cancelar</a></td>
+        <td>{{ agendamento.hora }}</td>
+        <td>{{ agendamento.fisioterapeuta.first_name | default:"Não especificado" }} {{ agendamento.fisioterapeuta.last_name | default:"" }}</td>
+
+        <td>
+            <a href="{% url 'cancelar_agendamento' agendamento.id %}">Cancelar</a>
+        </td>
+        {% empty %}
+    </tr>
+    <tr>
+        <td colspan="4">Nenhum agendamento encontrado.</td>
     </tr>
     {% endfor %}
 </table>
-<a href="{% url 'criar_agendamento' %}">Novo Agendamento</a>
-

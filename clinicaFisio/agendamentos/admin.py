@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Agendamento
+from .models import Agendamento, Fisioterapist
+from usuarios.models import User
 
-@admin.register(Agendamento)
-class AgendamentoAdmin(admin.ModelAdmin):
-    list_display = ['paciente', 'data', 'horario', 'descricao']
-    list_filter = ['data']
-    search_fields = ['paciente__username', 'descricao']
+
+admin.site.register(User)
+admin.site.register(Fisioterapist)
+admin.site.register(Agendamento)
