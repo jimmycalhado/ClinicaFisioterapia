@@ -15,7 +15,9 @@ def agendar_consulta(request):
     if request.method == 'POST':
         form = AgendamentoForm(request.POST)
         if form.is_valid():
+            print(form)
             fisioterapeuta = form.cleaned_data['fisioterapeuta']
+            print(fisioterapeuta)
             data = form.cleaned_data['data']
             hora = form.cleaned_data['hora']
             Agendamento.objects.create(
@@ -24,6 +26,7 @@ def agendar_consulta(request):
                 data=data,
                 hora=hora
             )
+            print(fisioterapeuta)
             return redirect('plataforma')  # Redireciona para uma página de sucesso
     else:
         form = AgendamentoForm()
