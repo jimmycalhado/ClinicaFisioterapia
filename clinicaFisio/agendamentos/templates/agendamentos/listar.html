@@ -11,7 +11,7 @@
     <tr>
         <td>{{ agendamento.data }}</td>
         <td>{{ agendamento.hora }}</td>
-        <td>{{ agendamento.fisioterapeuta.first_name | default:"Não especificado" }} {{ agendamento.fisioterapeuta.last_name | default:"Não especificado" }}</td>
+        <td>{{ agendamento.fisioterapeuta.first_name | default:"Não especificado" }} {{ agendamento.fisioterapeuta.last_name | default:"" }}</td>
 
         <td>
             <a href="{% url 'cancelar_agendamento' agendamento.id %}">Cancelar</a>
