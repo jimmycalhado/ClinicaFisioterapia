@@ -66,7 +66,7 @@ class Register(CreateView):
             'error_message': form.errors,
         })
 
-@login_required(login_url="/login/")
+@login_required(login_url="login")
 def plataforma(request):
     cpf = request.user.cpf
     username = request.user.username

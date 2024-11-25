@@ -4,13 +4,13 @@ from .models import Agendamento, Disponibilidade, Fisioterapist
 from usuarios.forms import AgendamentoForm
 from usuarios.models import User
 
-@login_required
+@login_required(login_url="login")
 def listar_agendamentos(request):
     paciente = request.user
     agendamentos = Agendamento.objects.filter(paciente=paciente)
     return render(request, 'agendamentos/listar.html', {'agendamentos': agendamentos})
 
-@login_required
+@login_required(login_url="login")
 def agendar_consulta(request):
     if request.method == 'POST':
         form = AgendamentoForm(request.POST)
@@ -34,13 +34,13 @@ def agendar_consulta(request):
     fisioterapists = Fisioterapist.objects.all()
     return render(request, 'agendamentos/criar.html', {'form': form, 'fisioterapists': fisioterapists})
 
-@login_required
+@login_required(login_url="login")
 def cancelar_agendamento(request, agendamento_id):
     agendamento = get_object_or_404(Agendamento, id=agendamento_id, paciente=request.user)
     agendamento.delete()
     return redirect('listar_agendamentos')
 
-@login_required
+@login_required(login_url="login")
 def definir_disponibilidade(request):
     if request.method == "POST":
         dias = request.POST.getlist('dias')
@@ -60,7 +60,7 @@ def definir_disponibilidade(request):
 
     return render(request, 'fisioterapeutas/definir_disponibilidade.html')
 
-@login_required
+@login_required(login_url="login")
 def ver_consultas(request):
     fisioterapeuta = User.objects.get(user=request.user)
     consultas = Agendamento.objects.filter(fisioterapeuta=fisioterapeuta)
