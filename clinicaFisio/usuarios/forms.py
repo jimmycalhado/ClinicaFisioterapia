@@ -86,9 +86,9 @@ class UserRegistrationForm(UserCreationForm):
 class AgendamentoForm(forms.ModelForm):
     class Meta:
         model = Agendamento
-        fields = ['fisioterapeuta','data', 'hora']
+        fields = ['fisioterapeuta', 'data', 'hora']
         widgets = {
-            'fisioterapeuta': forms.Select(attrs={'class': 'form-select'}),
-            'data': forms.DateInput(attrs={'type': 'date'}),
+            'fisioterapeuta': forms.Select(attrs={'class': 'form-select mt-2 mb-2'}),
+            'data': forms.DateInput(attrs={'type': 'date', 'class': 'mt-3 mb-3'}),  
             'hora': forms.TimeInput(attrs={'type': 'time'}),
-        }
+            }

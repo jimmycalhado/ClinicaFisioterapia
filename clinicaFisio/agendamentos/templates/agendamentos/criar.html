@@ -1,20 +1,98 @@
-<form method="post">
-    {% csrf_token %}
-    <label for="fisioterapeuta">Escolha o fisioterapeuta:</label>
-    <select name="fisioterapeuta" id="fisioterapeuta">
-        {% for fisioterapist in fisioterapists %}
-            <option value="{{ fisioterapist.id }}">
-                {{ fisioterapist.user.first_name }} {{ fisioterapist.user.last_name }}
-            </option>
-        {% endfor %}
-    </select>
-    <br>
-    <label for="data">Data:</label>
-    <input type="date" name="data" id="data" required>
-    <br>
-    <label for="hora">Hora:</label>
-    <input type="time" name="hora" id="hora" required>
-    <br>
-    <button type="submit">Agendar</button>
-    <br>
-</form>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>criar_agendamento</title>
+  <link rel="stylesheet" href="">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+</head>
+<body>
+    <nav class="bg-green-600">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div class="relative flex h-16 items-center justify-between">
+            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+              <div class="flex shrink-0 items-center">
+                <img class="h-9 w-auto" src="https://clinicaescola.unama.br/wp-content/themes/frmnt-clinicaescola/res/img/unama/logo-branco.svg" alt="Your Company">
+              </div>
+              <div class="hidden sm:ml-6 sm:block">
+                <div class="flex space-x-4">
+                  <a href="{% url 'plataforma' %}" class="rounded-md bg-green-800 px-3 py-2 text-sm font-medium text-white hover:bg-green-900 hover:text-white">Inicio</a>
+                  <a href="{% url 'listar_agendamentos' %}" class="rounded-md bg-green-800 px-3 py-2 text-sm font-medium text-white hover:bg-green-900 hover:text-white">Agendamentos</a>
+                  <a href="{% url 'criar_agendamento' %}" class="rounded-md bg-green-800 px-3 py-2 text-sm font-medium text-white hover:bg-green-900 hover:text-white">Agendar Atendimento</a>
+                </div>
+              </div>
+            </div>
+            <div class="absolute inset-y-0 right-0 flex items-center pr-2  sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div class="relative ml-3">
+                <div>
+                  <button type="button" class="relative flex rounded-full bg-white-900 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="true" aria-haspopup="false">
+                    <span class="absolute -inset-1.5"></span>
+                    <span class="sr-only">Open user menu</span>
+                    <img class="size-8 rounded-full" src="https://cdn-icons-png.flaticon.com/512/5987/5987462.png" alt="">
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <div class="w-full h-screen flex items-center justify-center bg-gray-100">
+        <div class="bg-white p-8 rounded-lg shadow-md max-w-lg w-full">
+          <div class="w-full">
+            <h3 class="text-lg font-bold text-slate-800">Novo Agendamento</h3>
+            <p class="text-slate-500 mb-5"></p>
+          </div>
+      
+          <form method="POST">
+            <div class="border-b border-gray-900/10 pb-12">
+              <h2 class="text-base/7 font-semibold text-gray-900">Personal Information</h2>
+              
+      
+              <div class="sm:col-span-3">
+                <label for="unidade" class="block text-sm/6 font-medium text-gray-900">Unidade Clinica:</label>
+                <div class="mt-2">
+                  <select name="unidade" id="unidade" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm/6">
+                    <option>Belém (PA)</option>
+                    <option>Alcindo Cacela (PA)</option>
+                    <option>Ananideua (PA)</option>
+                    <option>Gentil</option>
+                  </select>
+                </div>
+              </div>
+      
+              <div class="sm:col-span-3 mt-6">
+                <label for="especialidades" class="block text-sm/6 font-medium text-gray-900">Especialidades disponíveis:</label>
+                <div class="mt-2">
+                  <select name="especialidades" id="especialidades" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm/6">
+                    <option>FISIOTERAPIA - Acupuntura</option>
+                    <option>FISIOTERAPIA - Aquática</option>
+                    <option>FISIOTERAPIA - Avaliação Fisioterapêutica</option>
+                    <option>FISIOTERAPIA - Cardiorrespiratória</option>
+                    <option>FISIOTERAPIA - Musculação Terapêutica</option>
+                    <option>FISIOTERAPIA - Neurofuncional</option>
+                    <option>FISIOTERAPIA - Pilates</option>
+                    <option>FISIOTERAPIA - Pélvica</option>
+                    <option>FISIOTERAPIA - Traumato-Ortopedia</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="sm:col-span-3 mt-3"></div>
+              {{ form.as_p }}
+              </div>
+              
+              <div class="mt-6 flex items-center justify-end gap-x-6">
+                <button type="button" class="text-sm/6 font-semibold text-gray-900">Cancel</button>
+                <button type="submit" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Agendar</button>
+              </div>
+              {% csrf_token %}
+              
+            </div>
+          </form>
+        </div>
+      </div>         
+</body>
+</html>
+
