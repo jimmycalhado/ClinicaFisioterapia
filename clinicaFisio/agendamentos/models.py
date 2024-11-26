@@ -18,7 +18,6 @@ class Agendamento(models.Model):
     fisioterapeuta = models.ForeignKey(Fisioterapist, on_delete=models.CASCADE, related_name='consultas', null=True, blank=True)
     data = models.DateField()
     hora = models.TimeField()
-
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=['fisioterapeuta', 'data', 'hora'], name='unique_fisioterapeuta_horario')
