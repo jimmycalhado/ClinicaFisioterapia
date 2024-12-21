@@ -9,14 +9,14 @@ class LoginForm(AuthenticationForm):
         label='Username',
         max_length=150,
         widget=forms.TextInput(attrs={
-            'class': 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:pl-2 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
+            'class': 'block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
             'placeholder': 'Insira seu nome de usuário',
         })
     )
     password = forms.CharField(
         label='Password',
         widget=forms.PasswordInput(attrs={
-            'class': 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:pl-2 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
+            'class': 'block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
             'placeholder': 'Insira sua senha',
         })
     )
@@ -26,7 +26,7 @@ class UserRegistrationForm(UserCreationForm):
     password1 = forms.CharField(
         label="Senha",
         widget=forms.PasswordInput(attrs={
-            'class': 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:pl-2 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
+            'class': 'block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
             'placeholder': 'Senha',
             'id': 'password1',
         })
@@ -34,7 +34,7 @@ class UserRegistrationForm(UserCreationForm):
     password2 = forms.CharField(
         label="Confirme a Senha",
         widget=forms.PasswordInput(attrs={
-            'class': 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:pl-2 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
+            'class': 'block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
             'placeholder': 'Confirme a Senha',
             'id': 'password2',
         })
@@ -48,34 +48,34 @@ class UserRegistrationForm(UserCreationForm):
         ]
         widgets = {
             'first_name': forms.TextInput(attrs={
-                'class': 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:pl-2 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
+                'class': 'block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
                 'placeholder': 'Primeiro Nome',
                 'id': 'nome',
             }),
             'last_name': forms.TextInput(attrs={
-                'class': 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:pl-2 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
+                'class': 'block w-full rounded-md border-0 py-1.5 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
                 'placeholder': 'Sobrenome',
                 'id': 'sobrenome',
             }),
             'username': forms.TextInput(attrs={
-                'class': 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:pl-2 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
+                'class': 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
                 'placeholder': 'Nome de Usuário',
                 'id': 'nome_usuario',
             }),
             'cpf': forms.TextInput(attrs={
-                'class': 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:pl-2 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
+                'class': 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
                 'placeholder': '000.000.000-00',
                 'maxlength': '14',
                 'id': 'CPF',
                 'inputmode': 'numeric',
             }),
             'email': forms.EmailInput(attrs={
-                'class': 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:pl-2 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
+                'class': 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
                 'placeholder': 'Email',
                 'id': 'email',
             }),
             'telefone': forms.TextInput(attrs={
-                'class': 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:pl-2 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
+                'class': 'block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm/6',
                 'placeholder': '(XX) 9XXXX-XXXX',
                 'maxlength': '15',
                 'id': 'telefone',
