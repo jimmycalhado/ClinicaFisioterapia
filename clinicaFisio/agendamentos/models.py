@@ -1,6 +1,5 @@
 from django.db import models
 from usuarios.models import User
-from django.db.models import UniqueConstraint
 
 
 class Fisioterapist(models.Model):
@@ -24,13 +23,13 @@ class Agendamento(models.Model):
         ]
 
     def __str__(self):
-        return f"Agendamento de {self.paciente} com {self.fisioterapeuta.user.first_name} {self.fisioterapeuta.user.last_name} em {self.data} às {self.hora}"
+        return f"Paciente: {self.paciente} | Fisioterapeuta: {self.fisioterapeuta.user.first_name} {self.fisioterapeuta.user.last_name} | Data: {self.data} {self.hora}"
 
 class Disponibilidade(models.Model):
     fisioterapeuta = models.ForeignKey(
         Fisioterapist,
         on_delete=models.CASCADE,
- )
+    )
     dia_semana = models.CharField(max_length=20, choices=[
         ('segunda', 'Segunda-feira'),
         ('terca', 'Terça-feira'),
